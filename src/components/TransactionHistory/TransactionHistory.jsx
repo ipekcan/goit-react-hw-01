@@ -1,5 +1,4 @@
 import transactions from "../../transactions.json";
-import Item from "../Item/Item.jsx";
 import thStyles from "./TransactionHistory.module.css";
 
 const TransactionHistory = ({items}) => {
@@ -13,14 +12,15 @@ const TransactionHistory = ({items}) => {
                 </tr>
             </thead>
             <tbody>
-                {transactions.map(({id, type, amount, currency}) => (
-                    <Item
-                    key={id}
-                    type={type}
-                    amount={amount}
-                    currency={currency}
-                    />
-                ))}   
+                {items.map(i => {
+                    return (
+                        <tr key={i.id}>
+                            <td>{i.type}</td>
+                            <td>{i.amount}</td>
+                            <td>{i.currency}</td>
+                        </tr>    
+                        )
+                })}   
             </tbody>
         </table>
     );
